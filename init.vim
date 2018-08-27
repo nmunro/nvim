@@ -49,6 +49,7 @@ Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 Plug 'altercation/vim-colors-solarized'
 Plug 'luochen1990/rainbow'
+Plug 'iCyMind/NeoSolarized'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -217,8 +218,13 @@ set colorcolumn=120
 let g:rainbow_active = 1
 
 let no_buffers_menu=1
+set termguicolors
+set background=dark
+let g:neosolarized_contrast = "high"
+let g:neosolarized_visibility = "high"
+let g:neosolarized_vertSplitBgTrans = 1
 if !exists('g:not_finish_vimplug')
-  colorscheme molokai
+  colorscheme NeoSolarized
 endif
 
 set mousemodel=popup
