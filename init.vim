@@ -285,6 +285,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 
+
 "*****************************************************************************
 "" Abbreviations
 "*****************************************************************************
@@ -556,7 +557,7 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#smart_auto_mappings = 0
 
 " syntastic
-let g:syntastic_python_checkers=['python', 'flake8']
+let g:syntastic_python_checkers=['flake8']
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
