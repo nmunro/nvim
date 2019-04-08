@@ -9,7 +9,7 @@ endif
 
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
-let g:vim_bootstrap_langs = "c,elixir,erlang,haskell,html,javascript,lua,python,rust,scala"
+let g:vim_bootstrap_langs = "c,html,javascript,lua,python"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
@@ -31,8 +31,6 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -50,6 +48,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'altercation/vim-colors-solarized'
 Plug 'luochen1990/rainbow'
 Plug 'iCyMind/NeoSolarized'
+Plug 'ctrlpvim/ctrlp.vim'
+
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -72,75 +72,19 @@ endif
 
 Plug 'honza/vim-snippets'
 
-"" Color
-Plug 'tomasr/molokai'
-
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
 
-" c
-Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
-Plug 'ludwig/split-manpage.vim'
-
-
-" elixir
-Plug 'elixir-lang/vim-elixir'
-Plug 'carlosgaldino/elixir-snippets'
-
-
-" erlang
-Plug 'jimenezrick/vimerl'
-
-
-" haskell
-"" Haskell Bundle
-Plug 'eagletmt/neco-ghc'
-Plug 'dag/vim2hs'
-Plug 'pbrisbin/vim-syntax-shakespeare'
-
-
-" html
 "" HTML Bundle
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
 
-
-" javascript
-"" Javascript Bundle
-Plug 'jelera/vim-javascript-syntax'
-
-
-" lua
-"" Lua Bundle
-Plug 'xolox/vim-lua-ftplugin'
-Plug 'xolox/vim-lua-inspect'
-
-
-" python
-"" Python Bundle
-Plug 'davidhalter/jedi-vim'
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-
-
-" rust
-" Vim racer
-Plug 'racer-rust/vim-racer'
-
-" Rust.vim
-Plug 'rust-lang/rust.vim'
-
-
-" scala
-if has('python')
-    " sbt-vim
-    Plug 'ktvoelker/sbt-vim'
-endif
-" vim-scala
-Plug 'derekwyatt/vim-scala'
-
+" Common lisp
+Plug 'kovisoft/slimv'
+let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"sbcl --load ~/.config/nvim/plugged/slimv/slime/start-swank.lisp\""'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -230,7 +174,6 @@ endif
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
-" set gfn=Monofur\ 13
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
@@ -245,8 +188,6 @@ else
   let g:indentLine_concealcursor = 0
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
-
-  
 endif
 
 
@@ -544,17 +485,6 @@ augroup vimrc-python
       \ formatoptions+=croq softtabstop=4
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
-
-" jedi-vim
-let g:jedi#popup_on_dot = 0
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#show_call_signatures = "0"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#smart_auto_mappings = 0
 
 " syntastic
 let g:syntastic_python_checkers=['flake8']
